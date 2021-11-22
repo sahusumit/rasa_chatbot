@@ -1,0 +1,117 @@
+version: "2.0"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+  - thanks
+  - search_provider
+  - search_appointment
+  - inform
+  - lab_test_report
+  - view_declared_report
+
+actions:
+  - greet_action
+  - action_facility_search
+  - utter_ask_location
+  - utter_enter_location
+  - action_location_info
+  - fetch_all_appointment
+  - report_status
+  - action_view_declared_report
+  - utter_hello_messsage
+  
+entities:
+  - location
+  - facility_type
+  - appointment_type
+  - report_type
+  - view_report
+  - show
+  - name
+
+slots:
+  name:
+    type: text
+  location:
+    type: text
+   # influence_conversation: true
+  facility_type:
+    type: text
+   # influence_conversation: true
+  report_type:
+    type: text
+  view_report:
+    type: text
+  address:
+    type: unfeaturized
+    influence_conversation: false
+  
+
+responses:
+  utter_greet:
+  - text: "Hey! How are you?"
+  - text: "How may I help you?"
+
+  
+  # utter_cheer_up:
+  # - text: "Here is something to cheer you up:"
+  #   image: "https://i.imgur.com/nGF1K8f.jpg"
+
+  # utter_did_that_help:
+  # - text: "Did that help you?"
+  utter_hello_messsage:
+  - text: "Hello {name}, how may I assist you?"
+  - text: "Hello {name}, how can I help you?"
+  - text: "Hello {name}, what can I help you with?"
+
+  utter_happy:
+  - text: "Great carry on!"
+
+  utter_report_message:
+  - text: "Yes, the requested report has arrived. please select for further communication"
+    buttons:
+      - title: "view"
+        payload: 'view'
+      - title: "No"
+        payload: "/deny"
+
+  utter_goodbye:
+  - text: "Glad to be of help"
+  - text: "Happy to help"
+  - text: "Reach out anytime!"
+  
+  utter_how_can_i_help:
+  - text: "Hello, I am medicare locator. I can help you find the nearest hospital. How can I help?"
+  - text: "Hi! My name is mark. How can I help you today?"
+
+  utter_ask_location:
+  - text: "Can you provide list location please?"
+  - text: "To find the nearest {facility_type} I need your address."
+
+  # utter_iamabot:
+  # - text: "I am a bot, powered by Rasa."
+  
+  utter_enter_location:
+  - text: can you please select city you are looking for.
+
+  utter_completion_action:
+  - text: "May I help you with anything else?"
+  - text: "Please let me know if I can provide you any further information"
+  - text: "Can I help you with any further information?"
+
+  utter_ask_rephrase:
+  - text: "I’m unable to understand this request. Can you please explain further"
+  - text: "Sorry, I could not understand your request. Could you please elaborate?"
+
+  utter_default:
+  - text: I'm sorry, I can't help you.
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

@@ -1,0 +1,104 @@
+version: "2.0"
+
+stories:
+- story: search hospital happy path
+  steps:
+  - intent: greet
+  - action: utter_hello_messsage
+  #- action: utter_greet_message
+  - intent: search_provider
+    entities:
+      - facility_type: "hospital"
+      - location: "Kochi"
+  - action: action_location_info
+  # - slot_was_set:
+  #     - address: C-155 C block mayur vihar Delhi
+  - intent: thanks
+  - action: utter_goodbye
+
+- story: search hospital + location
+  steps:
+  - intent: greet
+ # - action: greet_action
+  - action: utter_hello_messsage
+  - intent: search_provider
+    entities:
+     - facility_type: "hospital"
+  - action: action_facility_search 
+  - action: utter_enter_location
+  - intent: inform
+    entities:
+     - location: "Kochi"
+  - action: action_location_info
+  - slot_was_set:
+      - address: C-155 C block mayur vihar Delhi
+  - intent: thanks
+  - action: utter_goodbye
+
+
+- story: Fetch my appointment Path
+  steps:
+  - intent: greet
+  # - action: greet_action
+  - action: utter_hello_messsage
+  - intent: search_appointment
+    entities:
+     - appointment_type: appointment
+  - action: fetch_all_appointment
+  - intent: thanks
+  - action: utter_goodbye
+ 
+- story: Fetch_diagnostic_order
+  steps:
+  - intent: greet
+  # - action: greet_action
+  - action: utter_hello_messsage
+  - intent: lab_test_report
+    entities:
+    - report_type: report
+  - action: report_status
+  # - action: utter_hello_messsage
+  - intent: view_declared_report
+    entities:
+    - view_report: view
+  - action: action_view_declared_report
+  - checkpoint: check_flow_completion
+
+
+
+
+- story: happy path
+  steps:
+  - intent: greet
+  - action: greet_action
+  - action: utter_hello_messsage
+  - intent: mood_great
+  - action: utter_happy
+
+# - story: sad path 1
+#   steps:
+#   - intent: greet
+#   - action: greet_action
+#   - intent: mood_unhappy
+#   - action: utter_cheer_up
+#   - action: utter_did_that_help
+#   - intent: affirm
+#   - action: utter_happy
+
+# - story: sad path 2
+#   steps:
+#   - intent: greet
+#   - action: greet_action
+#   - intent: mood_unhappy
+#   - action: utter_cheer_up
+#   - action: utter_did_that_help
+#   - intent: deny
+#   - action: utter_goodbye
+
+
+- story: event completion path
+  steps:
+  - checkpoint: check_flow_completion
+  - action: utter_completion_action
+  - intent: deny
+  - action: utter_goodbye

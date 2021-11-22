@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>My First Heading</h1>
+<p>My first paragraph.</p>
+<style>
+    .rw-conversation-container .rw-header{background-color: #D7A1F9}
+    .rw-conversation-container .rw-messages-container .rw-message .rw-client{background-color: #D7A1F9}
+    .rw-launcher{background-color: #D7A1F9}
+</style>
+<script>!(function () {
+    let e = document.createElement("script"),
+        t = document.head || document.getElementsByTagName("head")[0];
+    (e.src = "https://cdn.jsdelivr.net/npm/rasa-webchat@1.x.x/lib/index.js"),
+        // Replace 1.x.x with the version that you want
+        (e.async = !0),
+        (e.onload= function(){
+            window.WebChat.default({
+                initPayload:'/greet',
+                customData: { language: "en",token:"new Token",userName:"Sumit Sahu" },
+                socketUrl: "http://localhost:5005",
+                onSocketEvent: onSocketEvent,
+                token: "my_token",
+                title: "MV Assistant",
+                subtitle: "Transforming the World...",
+                showMessageDate: true,
+                inputTextFieldHint: "What's in your mind.....?",
+                showFullScreenButton: true,
+                params:{
+                    storage:"session",
+                },
+            },
+          
+           
+            null)
+        })
+        t.insertBefore(e, t.firstChild);
+})();
+// var web = new WebAvatar();
+//   web.version = 8.5;
+//   web.connection = sdk;
+//   web.avatar = "37788053";
+//   web.voice = "cmu-slt";
+//   web.voiceMod = "default";
+//   web.width = "300";
+//   web.height = "300";
+//   web.createBox();
+//   web.addMessage("Hello, I am Tuesday. The class chatbot", "", "", "");
+//   web.processMessages();
+return CommonUtility.createErrorOrSuccessMap(false, ErrorMessage.getErrorMsg(ErrorMessage.UNABLE_TO_GENERATE_PATIENT_ID), ErrorMessage.getErrorCode(ErrorMessage.UNABLE_TO_GENERATE_PATIENT_ID), com.mphrx.chingari.constants.ResponseStatus.UNABLE_TO_SAVE_RESOURCE)
+onSocketEvent={
+    'bot_uttered': function(e) {
+        console.log(e)
+        if(e.text.includes('http')){
+            var part = e.text.substring(
+                e.text.lastIndexOf("(") + 1,
+                e.text.lastIndexOf(")"))
+         console.log(part)
+         window.open(part,"_self")
+        }
+    }, 
+    'connect': function() {console.log('connection established')},
+    'disconnect': function() {doSomeCleanup()},
+  }
+
+
+</script>
+<!-- <div id="rasa-chat-widget" data-websocket-url="http://localhost:5005"></div>
+<script src="https://unpkg.com/@rasahq/rasa-chat" type="application/javascript"></script> -->
+</body>
+</html>

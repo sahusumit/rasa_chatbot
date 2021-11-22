@@ -1,0 +1,140 @@
+version: "2.0"
+
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+
+- intent: goodbye
+  examples: |
+    - good afternoon
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+
+- intent: inform
+  examples: |
+    - [Delhi](location)
+    - [New Delhi](location)
+    - [Noida](location)
+    - [Gurgaon](location)
+    - [South Delhi](location)
+    - [Ghaziabad](location)
+    - [Mayur Vihar](location)
+    - [Faridabad](location)
+    - [Kochi](location)
+    - [KERALA](location)
+    - [AsterHome](location)
+
+- intent: search_provider
+  examples: |
+    - i need [hospital](facility_type)
+    - find me nearby [hospital](facility_type)
+    - [hospital](facility_type)
+    - show my [health agency](facility_type)
+    - find me [hospital](facility_type) near by [delhi](location)
+    - find me [clinic](facility_type) near by my [zipcode 110091](location)
+    - I want to [hospital](facility_type) location
+
+- intent: search_appointment
+  examples: |
+    - show my [appointments](appointment_type)
+    - show my [bookings](appointment_type)
+    - [appointments](appointment_type)
+    - fetch my [bookings](appointment_type)
+
+
+- intent: lab_test_report
+  examples: |
+    - Please confirm my lab [report](report_type)  arrived.
+    - Have my lab [report](report_type)  arrived yet.
+    - when will my father's test [result](report_type) arrived.
+    - please [show](view_report) my lab [report](report_type) 
+    
+- intent: view_declared_report
+  examples: |
+    - Please [view](view_report).
+    - please [show](view_report).
+
+  
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+    - no thanks
+    - thank you
+    - Nothing else
+
+- intent: mood_great
+  examples: |
+    - perfect
+    - great
+    - amazing
+    - feeling like a king
+    - wonderful
+    - I am feeling very good
+    - I am great
+    - I am amazing
+    - I am going to save the world
+    - super stoked
+    - extremely good
+    - so so perfect
+    - so good
+    - so perfect
+
+- intent: mood_unhappy
+  examples: |
+    - my day was horrible
+    - I am sad
+    - I don't feel very well
+    - I am disappointed
+    - super sad
+    - I'm so sad
+    - sad
+    - very sad
+    - unhappy
+    - not good
+    - not very good
+    - extremly sad
+    - so saad
+    - so sad
+
+# - intent: bot_challenge
+#   examples: |
+#     - are you a bot?
+#     - are you a human?
+#     - am I talking to a bot?
+#     - am I talking to a human?
